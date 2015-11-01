@@ -10,7 +10,7 @@ import com.echonest.api.v4.*;
  */
 public class testProgram
 {
-   public static String[] moods = {"happy","sad", "loud", "quiet", "hot", "not"}; 
+   public static String[] moods = {"happy","sad", "intense", "upbeat", "mellow", "happy"}; 
    public static void main(String[] args) throws EchoNestException {    
     EchoNestAPI echoNest = new EchoNestAPI("F9GHGBIFH4HPLQBWR");
     Scanner userIn = new Scanner(System.in);
@@ -40,7 +40,7 @@ public class testProgram
         List<Song> liveSongs = echoNest.searchSongs(songParams);
         
         boolean found = false;
-       // System.out.println(songs);
+        
         for (Song song: songs) {
             if (artist.equals(song.getArtistName())) {
                 getSongInfo(song);
@@ -60,18 +60,12 @@ public class testProgram
         }
         }
         
-
         System.out.print("Enter a song name: ");
     }
 }
 
     
     public static void getSongInfo(Song song) throws EchoNestException{
-        /*System.out.println("Title: " + song.getTitle());
-        System.out.println("Artist: " + song.getArtistName());
-    
-        System.out.println("Hottness: " + song.getSongHotttnesss());
-        System.out.println("Energy: " + song.getEnergy());*/
         song.showAll();
     }
 
@@ -79,11 +73,28 @@ public class testProgram
         double energy = song.getEnergy();
         double danceability = song.getDanceability();
         double tempo = song.getTempo();
+        double loudness = song.getLoudness();
         
-        if (tempo < 100){
+        if (tempo < 90){
             if (energy < .5)
                 System.out.println(moods[1]);
+            else
+                System.out.println(moods[4]);
+           
         }
+        
+        else{
+            if (energy > .5){
+                if (loudness > -4)
+                    System.out.println(moods[2]);
+                else
+                    System.out.println(moods[3]);
+            }
+            else
+                System.out.println(moods[5]);
+            
+        }
+        
         
             
         
