@@ -61,6 +61,7 @@ public class testProgram
         }
         
         System.out.print("Enter a song name: ");
+        
     }
 }
 
@@ -74,31 +75,39 @@ public class testProgram
         double danceability = song.getDanceability();
         double tempo = song.getTempo();
         double loudness = song.getLoudness();
+        String mood = "";
         
         if (tempo < 90){
-            if (energy < .5)
+            if (energy < .5){
                 System.out.println(moods[1]);
-            else
+                mood = moods[1];
+            }
+            else{
                 System.out.println(moods[4]);
+                mood = moods[4];
+            }
            
         }
         
         else{
             if (energy > .5){
-                if (loudness > -4)
+                if (loudness > -4){
                     System.out.println(moods[2]);
-                else
+                    mood = moods[2];
+                }
+                else{
                     System.out.println(moods[3]);
+                    mood = moods[3];
+                }
             }
-            else
+            else{
                 System.out.println(moods[5]);
+                mood = moods[5];
+            }
             
         }
         
-        
-            
-        
-        
+        GUIFromJava.createAndShowGUI(mood);       
     }
 
 
