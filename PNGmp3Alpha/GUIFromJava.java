@@ -13,6 +13,7 @@ public class GUIFromJava {
         //Create and set up the window.
         JFrame frame = new JFrame("FrameDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
  
         JLabel emptyLabel = new JLabel(mood);
         emptyLabel.setPreferredSize(new Dimension(175, 100));
@@ -20,6 +21,7 @@ public class GUIFromJava {
  
         //Display the window.
         frame.pack();
+        frame.add(new MyPanel());
         frame.setVisible(true);
     }
 

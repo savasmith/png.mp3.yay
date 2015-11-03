@@ -79,11 +79,11 @@ public class testProgram
         
         if (tempo < 90){
             if (energy < .5){
-                System.out.println(moods[1]);
+      //          System.out.println(moods[1]);
                 mood = moods[1];
             }
             else{
-                System.out.println(moods[4]);
+        //        System.out.println(moods[4]);
                 mood = moods[4];
             }
            
@@ -92,16 +92,16 @@ public class testProgram
         else{
             if (energy > .5){
                 if (loudness > -4){
-                    System.out.println(moods[2]);
+//                    System.out.println(moods[2]);
                     mood = moods[2];
                 }
                 else{
-                    System.out.println(moods[3]);
+  //                  System.out.println(moods[3]);
                     mood = moods[3];
                 }
             }
             else{
-                System.out.println(moods[5]);
+    //            System.out.println(moods[5]);
                 mood = moods[5];
             }
             
