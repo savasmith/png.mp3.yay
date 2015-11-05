@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
  
 /* FrameDemo.java requires no other files. */
 public class GUIFromJava {
@@ -16,12 +17,36 @@ public class GUIFromJava {
         
  
         JLabel emptyLabel = new JLabel(mood);
+        
+        JLabel imgLabel = new JLabel(new ImageIcon("../images/error.png"));
+        
+        
+        switch (mood){
+            case "happy":
+            imgLabel =  new JLabel(new ImageIcon("../images/happy_face.png"));
+            break;
+            
+            case "sad":
+            imgLabel =  new JLabel(new ImageIcon("../images/sad.png"));
+            break;
+            
+            
+          
+            
+            
+            
+        }
+            
+        
         emptyLabel.setPreferredSize(new Dimension(175, 100));
+        
         frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+        frame.getContentPane().add(imgLabel, BorderLayout.CENTER);
+        
  
         //Display the window.
         frame.pack();
-        frame.add(new MyPanel());
+        //frame.add(new MyPanel());
         frame.setVisible(true);
     }
 
