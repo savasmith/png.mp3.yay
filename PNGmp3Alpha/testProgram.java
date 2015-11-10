@@ -14,7 +14,7 @@ public class testProgram
    public static String[] moods = {"happy","sad", "intense", "upbeat", "mellow", "happy"}; 
 
 
-    public static void findSong(String songName, String artistName) throws EchoNestException{
+    public void findSong(String songName, String artistName) throws EchoNestException{
         System.out.println(songName);
         System.out.println(artistName);
         Params songParams = new Params();
@@ -38,11 +38,11 @@ public class testProgram
         }
     
     
-    public static void getSongInfo(Song song) throws EchoNestException{
+    public void getSongInfo(Song song) throws EchoNestException{
         song.showAll();
     }
 
-    public static void songMoodMatch(Song song) throws EchoNestException{
+    public void songMoodMatch(Song song) throws EchoNestException{
         double energy = song.getEnergy();
         double danceability = song.getDanceability();
         double tempo = song.getTempo();
@@ -79,9 +79,9 @@ public class testProgram
             
         }
         
-        GUIFromJava.createAndShowGUI(mood);       
+        GUIFromJava gui = new GUIFromJava(mood);       
     }
-    public static Song songMatch(List<Artist> artists, String songName) throws EchoNestException {
+    public Song songMatch(List<Artist> artists, String songName) throws EchoNestException {
         Song selected = null;
         for(Artist artist : artists) {
             for(Song song : artist.getSongs()) {
@@ -94,7 +94,7 @@ public class testProgram
         return selected;
     }
     
-    public static Song getPopular(List<Song> songs){
+    public Song getPopular(List<Song> songs){
         Song popular = songs.get(0);
         
         for(Song song : songs) {

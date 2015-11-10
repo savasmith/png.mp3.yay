@@ -4,50 +4,70 @@ import javax.swing.*;
 import java.io.*;
  
 /* FrameDemo.java requires no other files. */
-public class GUIFromJava {
+public class GUIFromJava extends javax.swing.JFrame{
     /**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
      * event-dispatching thread.
      */
-    public static void createAndShowGUI(String mood) {
+    public GUIFromJava(String mood) {
+        createAndShowGUI(mood);
+    }
+    public void createAndShowGUI(String mood)  {
         //Create and set up the window.
-        JFrame frame = new JFrame("FrameDemo");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
  
-        JLabel emptyLabel = new JLabel(mood);
+        moodLabel = new JLabel(mood);
+        imageLabel = new JLabel(new ImageIcon("../images/error.png"));
         
-        JLabel imgLabel = new JLabel(new ImageIcon("../images/error.png"));
-        
-        
+        System.out.println(moodLabel.getText());
         switch (mood){
             case "happy":
-            imgLabel =  new JLabel(new ImageIcon("../images/happy_face.png"));
+            imageLabel =  new JLabel(new ImageIcon("../images/happy_face.png"));
             break;
             
             case "sad":
-            imgLabel =  new JLabel(new ImageIcon("../images/sad.png"));
-            break;
-            
-            
-          
-            
-            
-            
+            imageLabel =  new JLabel(new ImageIcon("../images/sad.png"));
+            break;   
         }
             
         
-        emptyLabel.setPreferredSize(new Dimension(175, 100));
+        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(PanelLayout);
+        PanelLayout
+            .setHorizontalGroup(PanelLayout
+                .createParallelGroup(
+                    javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(
+                    PanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(moodLabel))
+                .addGroup(
+                    PanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(imageLabel)));
+                        
+        PanelLayout
+            .setVerticalGroup(PanelLayout
+                .createParallelGroup(
+                    javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(
+                    PanelLayout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(moodLabel)
+                    .addGap(50, 50, 50)
+                    .addComponent(imageLabel)));
+                     
         
-        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
-        frame.getContentPane().add(imgLabel, BorderLayout.CENTER);
+   //     frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+   //     frame.getContentPane().add(imgLabel, BorderLayout.CENTER);
         
- 
-        //Display the window.
-        frame.pack();
-        //frame.add(new MyPanel());
-        frame.setVisible(true);
+        pack();
+        setVisible(true);
     }
+    
+    private javax.swing.JLabel moodLabel;
+    private javax.swing.JLabel imageLabel;
 
 }
