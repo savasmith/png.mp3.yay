@@ -65,6 +65,9 @@ public class testProgram
     }
 }
 
+    public static void findSong(String songName) {
+        System.out.println(songName);
+    }
     
     public static void getSongInfo(Song song) throws EchoNestException{
         song.showAll();
