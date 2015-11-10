@@ -13,16 +13,22 @@ public class mainInterface extends javax.swing.JFrame{
         initComponents();
     }
     
-    public void initComponents(){
+    public void initComponents() {
        mainPanel = new javax.swing.JPanel();
        findSong = new javax.swing.JButton();
        songInput = new javax.swing.JTextField("Enter Song Name");
+       artistInput = new javax.swing.JTextField("Enter Artist Name");
        
        findSong.setText("Find Song");
        songInput.setSize(10, 50);
        findSong.addActionListener(new java.awt.event.ActionListener() {
-           public void actionPerformed(java.awt.event.ActionEvent evt) {
+           public void actionPerformed(java.awt.event.ActionEvent evt){
+               try {
                findSongActionPerformed(evt);
+            }catch(Exception e){
+                System.out.println(e);
+            }
+            
             }
         });
        
@@ -38,7 +44,12 @@ public class mainInterface extends javax.swing.JFrame{
                     .addGap(21,21,21)
                     .addComponent(songInput)
                     .addGap(50, 50, 50)
-                    .addComponent(findSong)));
+                    .addComponent(findSong))
+             .addGroup(
+                PanelLayout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(artistInput)
+                     .addGap(132, 132, 132)));
        PanelLayout
         .setVerticalGroup(PanelLayout
             .createParallelGroup(
@@ -47,6 +58,7 @@ public class mainInterface extends javax.swing.JFrame{
                 PanelLayout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(songInput)
+                    .addComponent(artistInput)
                     .addComponent(findSong)
                     .addGap(21, 21, 21)));
         
@@ -54,8 +66,15 @@ public class mainInterface extends javax.swing.JFrame{
         
     }
     
-    private void findSongActionPerformed(java.awt.event.ActionEvent evt) {
-        testProgram.findSong(songInput.getText());
+    private void findSongActionPerformed(java.awt.event.ActionEvent evt){
+        testProgram backEnd = new testProgram();
+        if(songInput.getText() != null) {
+            try {
+                backEnd.findSong(songInput.getText(), artistInput.getText());
+            }catch(Exception e){
+                System.out.println(e);
+            }
+        }
     }
     
     public static void main(String args[]) {
@@ -94,5 +113,6 @@ public class mainInterface extends javax.swing.JFrame{
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton findSong;
     private javax.swing.JTextField songInput;
+    private javax.swing.JTextField artistInput;
     
 }

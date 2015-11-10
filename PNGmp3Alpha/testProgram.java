@@ -10,64 +10,33 @@ import com.echonest.api.v4.*;
  */
 public class testProgram
 {
+   public static EchoNestAPI echoNest;
    public static String[] moods = {"happy","sad", "intense", "upbeat", "mellow", "happy"}; 
-   public static void main(String[] args) throws EchoNestException {    
-    EchoNestAPI echoNest = new EchoNestAPI("F9GHGBIFH4HPLQBWR");
-    Scanner userIn = new Scanner(System.in);
-    boolean quit = false;
-    String songName = "";
-    System.out.print("Enter a song name: ");
-    while (userIn.hasNext() || quit == true){    
-        songName = userIn.nextLine();
-        if (songName.equals("q")){
-            quit = true;
-            break;
-        }
-        
-        /**
-         * Below is a modified Searchsongs function from an echonestJEN example
-         */
+
+
+    public static void findSong(String songName, String artistName) throws EchoNestException{
+        System.out.println(songName);
+        System.out.println(artistName);
         Params songParams = new Params();
         songParams.add("title", songName);
-        List<Song> songs = echoNest.searchSongs(songParams);
+        echoNest = new EchoNestAPI("F9GHGBIFH4HPLQBWR");
+        List<Artist> artists = echoNest.searchArtists(artistName);
         
-        System.out.print("Enter the Artist: ");
-        String artist = userIn.nextLine();
-        
-        songParams = new Params();
-        songName += " (Live)";
-        songParams.add("title", songName);
-        List<Song> liveSongs = echoNest.searchSongs(songParams);
-        
-        boolean found = false;
-        
-        for (Song song: songs) {
-            if (artist.equals(song.getArtistName())) {
-                getSongInfo(song);
-                songMoodMatch(song);
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            for (Song song: liveSongs) {
-                if (artist.equals(song.getArtistName())) {
-                    getSongInfo(song);
-                    songMoodMatch(song);
-                    found = true;
-                    break;
-                }
-        }
-        }
-        
-        System.out.print("Enter a song name: ");
-        
-    }
-}
 
-    public static void findSong(String songName) {
-        System.out.println(songName);
-    }
+        System.out.println(artists);
+        Song song = songMatch(artists, songName);
+       
+        if (song != null) {
+            getSongInfo(song);
+        songMoodMatch(song);
+        }
+    
+        
+        
+             
+           
+        }
+    
     
     public static void getSongInfo(Song song) throws EchoNestException{
         song.showAll();
@@ -112,8 +81,30 @@ public class testProgram
         
         GUIFromJava.createAndShowGUI(mood);       
     }
-
-
+    public static Song songMatch(List<Artist> artists, String songName) throws EchoNestException {
+        Song selected = null;
+        for(Artist artist : artists) {
+            for(Song song : artist.getSongs()) {
+                if (song.getTitle().contains(songName)) {
+                    selected = song;
+                    break;
+                }
+            }
+        }
+        return selected;
+    }
+    
+    public static Song getPopular(List<Song> songs){
+        Song popular = songs.get(0);
+        
+        for(Song song : songs) {
+            System.out.println(song);
+           /*if(song.getSongHotttnesss() > popular.getSongHotttnesss()) {
+               popular = song;
+            }*/
+        }
+        return popular;
+    }
 }
 
 
