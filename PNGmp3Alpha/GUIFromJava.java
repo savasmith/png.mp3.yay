@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.io.*;
  
 /* FrameDemo.java requires no other files. */
-public class GUIFromJava extends javax.swing.JFrame{
+public class GUIFromJava extends javax.swing.JPanel{
     /**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
@@ -15,8 +15,8 @@ public class GUIFromJava extends javax.swing.JFrame{
     }
     public void createAndShowGUI(String mood)  {
         //Create and set up the window.
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
+        setBackground(java.awt.Color.WHITE);
  
         moodLabel = new JLabel(mood);
         imageLabel = new JLabel(new ImageIcon("../images/error.png"));
@@ -31,10 +31,11 @@ public class GUIFromJava extends javax.swing.JFrame{
             imageLabel =  new JLabel(new ImageIcon("../images/sad.png"));
             break;   
         }
-            
+         
+        imageLabel.setSize(50,50);
         
-        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(PanelLayout);
+        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(this);
+        setLayout(PanelLayout);
         PanelLayout
             .setHorizontalGroup(PanelLayout
                 .createParallelGroup(
@@ -58,13 +59,9 @@ public class GUIFromJava extends javax.swing.JFrame{
                     .addComponent(moodLabel)
                     .addGap(50, 50, 50)
                     .addComponent(imageLabel)));
-                     
-        
-   //     frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
-   //     frame.getContentPane().add(imgLabel, BorderLayout.CENTER);
-        
-        pack();
-        setVisible(true);
+                      
+
+       // setVisible(true);
     }
     
     private javax.swing.JLabel moodLabel;

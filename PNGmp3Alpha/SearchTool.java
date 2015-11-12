@@ -7,10 +7,11 @@
  * @author Savannah Smith
  * @version (a version number or a date)
  */
-public class mainInterface extends javax.swing.JFrame{
+public class SearchTool extends javax.swing.JPanel{
+    private MusicTool musicTool;
 
-
-    public mainInterface() {
+    public SearchTool(MusicTool musicTool) {
+        this.musicTool = musicTool;
         initComponents();
     }
     
@@ -21,7 +22,9 @@ public class mainInterface extends javax.swing.JFrame{
        songInput = new javax.swing.JTextField("Enter Song Name");
        artistInput = new javax.swing.JTextField("Enter Artist Name");
        
-       songLabel.setFont(new java.awt.Font("Courier New", java.awt.Font.ITALIC, 20));
+       //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       setBackground(java.awt.Color.WHITE);
+       songLabel.setFont(new java.awt.Font("Courier New", java.awt.Font.BOLD, 20));
        findSong.setText("Find Song");
        
        songInput.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -47,9 +50,9 @@ public class mainInterface extends javax.swing.JFrame{
             }
         });
        
-       javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
+       javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(this);
        
-       getContentPane().setLayout(PanelLayout);
+      setLayout(PanelLayout);
        PanelLayout
         .setHorizontalGroup(PanelLayout
             .createParallelGroup(
@@ -85,54 +88,22 @@ public class mainInterface extends javax.swing.JFrame{
                     .addComponent(findSong)
                     .addGap(21, 21, 21)));
         
-        pack();
+       // pack();
         
     }
     
     private void findSongActionPerformed(java.awt.event.ActionEvent evt){
-        testProgram backEnd = new testProgram();
+        SongFinder backEnd = new SongFinder();
         if(songInput.getText() != null) {
             try {
-                backEnd.findSong(songInput.getText(), artistInput.getText());
+                backEnd.findSong(songInput.getText(), artistInput.getText(), musicTool);
             }catch(Exception e){
                 System.out.println(e);
             }
         }
     }
     
-    public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-                    .getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainInterface.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainInterface.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainInterface.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainInterface.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        // </editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new mainInterface().setVisible(true);
-            }
-        });
-    }
-    
+  
     private javax.swing.JButton findSong;
     private javax.swing.JLabel songLabel;
     public javax.swing.JTextField songInput;
