@@ -20,7 +20,7 @@ public class GUIFromJava extends javax.swing.JPanel{
  
         moodLabel = new JLabel(mood);
         imageLabel = new JLabel(new ImageIcon("../images/error.png"));
-        
+        moodLabel.setFont(new java.awt.Font("Courier New", java.awt.Font.BOLD, 20));
         System.out.println(moodLabel.getText());
         switch (mood){
             case "happy":

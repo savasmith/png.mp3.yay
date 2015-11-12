@@ -13,6 +13,8 @@ public class MusicTool extends javax.swing.JFrame{
     
    public void initComponents() {
        searchPanel = new SearchTool(this);
+
+
        
        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
@@ -43,7 +45,21 @@ public class MusicTool extends javax.swing.JFrame{
    
    public void changeGUI(String mood) {
        displayPanel = new GUIFromJava(mood);
+       searchInterface = new javax.swing.JButton();
+       searchInterface.setText("Search Again");
        
+       searchInterface.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt){
+               try {
+                   remove(displayPanel);
+                   remove(searchInterface);
+                   initComponents();
+            }catch(Exception e){
+                System.out.println(e);
+            }
+            
+            }
+        });
        remove(searchPanel);
        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
        getContentPane().setLayout(PanelLayout);
@@ -56,7 +72,12 @@ public class MusicTool extends javax.swing.JFrame{
                 PanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(displayPanel)
-                .addGap(21, 21, 21)));
+                .addGap(21, 21, 21))
+             .addGroup(
+                PanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(searchInterface)));
+               
       
        PanelLayout
         .setVerticalGroup(PanelLayout
@@ -66,7 +87,8 @@ public class MusicTool extends javax.swing.JFrame{
                 PanelLayout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(displayPanel)
-                    .addGap(21, 21, 21)));
+                    .addGap(21, 21, 21)
+                    .addComponent(searchInterface)));
                     
       pack(); 
        
@@ -104,6 +126,8 @@ public class MusicTool extends javax.swing.JFrame{
         });
    }
     
-   SearchTool searchPanel;
-   GUIFromJava displayPanel;
+   private SearchTool searchPanel;
+   private GUIFromJava displayPanel;
+   private javax.swing.JButton searchInterface;
+   
 }
