@@ -16,17 +16,13 @@ public class MusicTool extends javax.swing.JFrame{
        if(displayPanel != null) {
            remove(displayPanel);
         }
+       if(imageUploadPanel != null) {
+           remove(imageUploadPanel);
+        }
        searchPanel = new SearchTool(this);
        Bar = new SideBar(this);
        separator = new javax.swing.JSeparator();
 
-       try{
-            UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
-
-    }catch(Exception e){
-        System.out.println(e);
-    }
-    
        getContentPane().setBackground(java.awt.Color.WHITE);
        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
@@ -64,26 +60,22 @@ public class MusicTool extends javax.swing.JFrame{
       pack(); 
    }
    
+   /** If the song is not found: 
+    *  Display popup to alert user, clear text fields
+    */
+   public void SongUnfound(String songName, String artistName){
+       javax.swing.JOptionPane.showMessageDialog(null,
+    songName + " by " + artistName + " was not found.",
+    "Error",
+    javax.swing.JOptionPane.ERROR_MESSAGE);
+
+    searchPanel.clear();
+   }
+   
    /**Changes the GUI interface to show what image is connected to it */
-   public void changeGUI(String mood) {
+   public void showResults(String mood) {
        displayPanel = new GUIFromJava(mood);
-       searchInterface = new javax.swing.JButton();
-       searchInterface.setText("Search Again");
-       
-       // adds an action listener to the search again button
-       // lets the user go back to the search panel
-       searchInterface.addActionListener(new java.awt.event.ActionListener() {
-           public void actionPerformed(java.awt.event.ActionEvent evt){
-               try {
-                   remove(displayPanel);
-                   remove(searchInterface);
-                   initComponents();
-            }catch(Exception e){
-                System.out.println(e);
-            }
-            
-            }
-        });
+
        remove(searchPanel);
        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
        getContentPane().setLayout(PanelLayout);
@@ -92,10 +84,6 @@ public class MusicTool extends javax.swing.JFrame{
         .setHorizontalGroup(PanelLayout
             .createParallelGroup(
                 javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(
-                PanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(searchInterface))
             .addGroup(
                 PanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -110,8 +98,6 @@ public class MusicTool extends javax.swing.JFrame{
                 javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(
                 PanelLayout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addComponent(searchInterface)
                     .addGap(21,21,21)
                     .addComponent(displayPanel)
                     .addGap(21, 21, 21)
@@ -120,13 +106,61 @@ public class MusicTool extends javax.swing.JFrame{
       pack(); 
        
    }
-   public static void main(String args[]) {
+   
+   public void UploadImage() {
+       if(displayPanel != null) {
+           remove(displayPanel);
+        }
+       if(searchPanel != null) {
+           remove(searchPanel);
+        }
+        imageUploadPanel = new ImageUploader(this);
+        
+         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
+       getContentPane().setLayout(PanelLayout);
+       
+       //May be problem: creating new Panel Layout instead of adding to current one
+       PanelLayout
+        .setHorizontalGroup(PanelLayout
+            .createParallelGroup(
+                javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(
+                PanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(imageUploadPanel)
+                .addGap(21, 21, 21))
+             );
 
+       PanelLayout
+        .setVerticalGroup(PanelLayout
+            .createParallelGroup(
+                javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(
+                PanelLayout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+
+                    .addComponent(imageUploadPanel)
+                    .addGap(21, 21, 21)
+                    ));
+                    
+      pack(); 
+   }
+   
+   public void addSong() {
+    songAdderPanel = new SongAdder(this);
+    
+   }
+    
+   public void viewPastSongs() {
+       songViewerPanel = new PastSongViewer(this);
+   }
+   public static void main(String args[]) {
+     
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
                     .getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
                     break;
                 }
             }
@@ -155,7 +189,8 @@ public class MusicTool extends javax.swing.JFrame{
    private SideBar Bar;
    private SearchTool searchPanel;
    private GUIFromJava displayPanel;
-   private javax.swing.JButton searchInterface;
+   private ImageUploader imageUploadPanel;
+   private SongAdder songAdderPanel;
+   private PastSongViewer songViewerPanel;
    private javax.swing.JSeparator separator;
-   
 }
