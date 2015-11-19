@@ -85,7 +85,7 @@ public class SearchTool extends javax.swing.JPanel{
                 PanelLayout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(artistInput)
-                     .addGap(120, 120, 120)));
+                     .addGap(132, 132, 132)));
        PanelLayout
         .setVerticalGroup(PanelLayout
             .createParallelGroup(
@@ -106,17 +106,13 @@ public class SearchTool extends javax.swing.JPanel{
     
     private void findSongActionPerformed(java.awt.event.ActionEvent evt){
         SongFinder backEnd = new SongFinder();
-        if(songInput.getText() != null && artistInput.getText() != null) {
+        if(songInput.getText() != null) {
             try {
                 backEnd.findSong(songInput.getText(), artistInput.getText(), musicTool);
             }catch(Exception e){
                 System.out.println(e);
             }
         }
-    }
-    public void clear() {
-        songInput.setText("Enter Song Name");
-        artistInput.setText("Enter Artist Name");
     }
     /*
       //this should be working to let us change the UI but its stupid

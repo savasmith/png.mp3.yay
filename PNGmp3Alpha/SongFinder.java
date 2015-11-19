@@ -9,31 +9,28 @@ import com.echonest.api.v4.*;
  * @version 10/19
  */
 public class SongFinder {
-   private static EchoNestAPI echoNest;
-   private static String[] moods = {"happy","sad", "intense", "upbeat", "mellow", "happy"}; 
-   private static MusicTool musicTool;
-   
-   public SongFinder() {
-       echoNest = new EchoNestAPI("F9GHGBIFH4HPLQBWR");
-    }
-    public void findSong(String songName, String artistName, MusicTool musicTool) throws EchoNestException{
+   public static EchoNestAPI echoNest;
+   public static String[] moods = {"happy","sad", "intense", "upbeat", "mellow", "happy"}; 
 
+   public static MusicTool musicTool;
+    public void findSong(String songName, String artistName, MusicTool musicTool) throws EchoNestException{
         this.musicTool = musicTool;
-       
+        System.out.println(songName);
+        System.out.println(artistName);
         Params songParams = new Params();
         songParams.add("title", songName);
-        
-
+        echoNest = new EchoNestAPI("F9GHGBIFH4HPLQBWR");
         List<Artist> artists = echoNest.searchArtists(artistName);
 
+
+        System.out.println(artists);
         Song song = songMatch(artists, songName);
        
         if (song != null) {
-           // getSongInfo(song);
+            getSongInfo(song);
             songMoodMatch(song);
         }
         else{
-            musicTool.SongUnfound(songName, artistName);
             musicTool.initComponents();
         }
    
@@ -80,7 +77,7 @@ public class SongFinder {
             }
             
         }
-        musicTool.showResults(mood);
+        musicTool.changeGUI(mood);
     }
     public Song songMatch(List<Artist> artists, String songName) throws EchoNestException {
         Song selected = null;

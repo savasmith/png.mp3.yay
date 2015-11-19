@@ -11,6 +11,4 @@ comment4.params=evt
 comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment5.params=evt
 comment5.target=void\ findSongActionPerformed(java.awt.event.ActionEvent)
-comment6.params=
-comment6.target=void\ clear()
-numComments=7
+numComments=6

@@ -9,7 +9,8 @@
 public class SideBar extends javax.swing.JPanel {
     // instance variables - replace the example below with your own
  
-    public SideBar(MusicTool musicTool) {
+    public SideBar(MusicTool musicTool)
+    {
         this.musicTool = musicTool;
         initComponents();
         
@@ -29,13 +30,8 @@ public class SideBar extends javax.swing.JPanel {
                 musicTool.initComponents();
             }
         });
-        uploadImageButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                musicTool.UploadImage();
-            }
-        });
         
-    try{
+            try{
        javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
     }catch(Exception e) {
     
