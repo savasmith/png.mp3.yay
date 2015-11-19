@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
  
+//I am a test
 /* FrameDemo.java requires no other files. */
 public class GUIFromJava extends javax.swing.JPanel{
     /**
