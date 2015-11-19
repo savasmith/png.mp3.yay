@@ -85,7 +85,7 @@ public class SearchTool extends javax.swing.JPanel{
                 PanelLayout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(artistInput)
-                     .addGap(132, 132, 132)));
+                     .addGap(120, 120, 120)));
        PanelLayout
         .setVerticalGroup(PanelLayout
             .createParallelGroup(

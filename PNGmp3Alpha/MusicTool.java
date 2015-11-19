@@ -20,12 +20,6 @@ public class MusicTool extends javax.swing.JFrame{
        Bar = new SideBar(this);
        separator = new javax.swing.JSeparator();
 
-       try{
-            UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
-
-    }catch(Exception e){
-        System.out.println(e);
-    }
     
        getContentPane().setBackground(java.awt.Color.WHITE);
        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
@@ -126,7 +120,7 @@ public class MusicTool extends javax.swing.JFrame{
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
                     .getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
                     break;
                 }
             }
