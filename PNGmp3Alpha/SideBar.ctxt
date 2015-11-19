@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=musicTool
+comment0.target=SideBar(MusicTool)
+comment1.params=
+comment1.target=void\ initComponents()
+comment2.params=evt
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=3

@@ -30,11 +30,10 @@ public class SongFinder {
             getSongInfo(song);
             songMoodMatch(song);
         }
-    
-
-        
-             
-           
+        else{
+            musicTool.initComponents();
+        }
+   
         }
     
     

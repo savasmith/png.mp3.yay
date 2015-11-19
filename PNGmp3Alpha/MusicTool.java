@@ -1,4 +1,4 @@
-
+import javax.swing.UIManager;
 /**
  * Write a description of class musicImage here.
  * 
@@ -11,20 +11,40 @@ public class MusicTool extends javax.swing.JFrame{
        initComponents();
    }
     
+   /**initializes the start of the app with the search panel */
    public void initComponents() {
+       if(displayPanel != null) {
+           remove(displayPanel);
+        }
        searchPanel = new SearchTool(this);
+       Bar = new SideBar(this);
+       separator = new javax.swing.JSeparator();
 
+       try{
+            UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
 
-       
+    }catch(Exception e){
+        System.out.println(e);
+    }
+    
+       getContentPane().setBackground(java.awt.Color.WHITE);
        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
        getContentPane().setLayout(PanelLayout);
-       
+
        PanelLayout
         .setHorizontalGroup(PanelLayout
             .createParallelGroup(
                 javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(
+                PanelLayout.createSequentialGroup()
+                .addComponent(Bar))
+             .addGroup(
+                PanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(separator)
+                .addGap(21, 21, 21))
+             .addGroup(
                 PanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(searchPanel)
@@ -36,18 +56,22 @@ public class MusicTool extends javax.swing.JFrame{
                 javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(
                 PanelLayout.createSequentialGroup()
-                    .addGap(21, 21, 21)
+                    .addComponent(Bar)
+                    .addComponent(separator)
                     .addComponent(searchPanel)
                     .addGap(21, 21, 21)));
                     
       pack(); 
    }
    
+   /**Changes the GUI interface to show what image is connected to it */
    public void changeGUI(String mood) {
        displayPanel = new GUIFromJava(mood);
        searchInterface = new javax.swing.JButton();
        searchInterface.setText("Search Again");
        
+       // adds an action listener to the search again button
+       // lets the user go back to the search panel
        searchInterface.addActionListener(new java.awt.event.ActionListener() {
            public void actionPerformed(java.awt.event.ActionEvent evt){
                try {
@@ -68,15 +92,16 @@ public class MusicTool extends javax.swing.JFrame{
         .setHorizontalGroup(PanelLayout
             .createParallelGroup(
                 javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(
+                PanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(searchInterface))
             .addGroup(
                 PanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(displayPanel)
                 .addGap(21, 21, 21))
-             .addGroup(
-                PanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(searchInterface)));
+             );
                
       
        PanelLayout
@@ -86,9 +111,11 @@ public class MusicTool extends javax.swing.JFrame{
             .addGroup(
                 PanelLayout.createSequentialGroup()
                     .addGap(21, 21, 21)
+                    .addComponent(searchInterface)
+                    .addGap(21,21,21)
                     .addComponent(displayPanel)
                     .addGap(21, 21, 21)
-                    .addComponent(searchInterface)));
+                    ));
                     
       pack(); 
        
@@ -125,9 +152,10 @@ public class MusicTool extends javax.swing.JFrame{
             }
         });
    }
-    
+   private SideBar Bar;
    private SearchTool searchPanel;
    private GUIFromJava displayPanel;
    private javax.swing.JButton searchInterface;
+   private javax.swing.JSeparator separator;
    
 }

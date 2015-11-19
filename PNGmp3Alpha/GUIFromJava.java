@@ -18,6 +18,11 @@ public class GUIFromJava extends javax.swing.JPanel{
 
         setBackground(java.awt.Color.WHITE);
  
+            try{
+       javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
+    }catch(Exception e) {
+    
+    }
         moodLabel = new JLabel(mood);
         imageLabel = new JLabel(new ImageIcon("../images/error.png"));
         moodLabel.setFont(new java.awt.Font("Courier New", java.awt.Font.BOLD, 20));
@@ -29,7 +34,11 @@ public class GUIFromJava extends javax.swing.JPanel{
             
             case "sad":
             imageLabel =  new JLabel(new ImageIcon("../images/sad.png"));
-            break;   
+            break;  
+            
+            case "upbeat":
+            imageLabel = new JLabel(new ImageIcon("../images/upbeat.jpg"));
+            break;
         }
          
         imageLabel.setSize(50,50);
