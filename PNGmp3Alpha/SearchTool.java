@@ -114,6 +114,10 @@ public class SearchTool extends javax.swing.JPanel{
             }
         }
     }
+    public void clear() {
+        songInput.setText("Enter Song Name");
+        artistInput.setText("Enter Artist Name");
+    }
     /*
       //this should be working to let us change the UI but its stupid
     private Properties getTheme() {

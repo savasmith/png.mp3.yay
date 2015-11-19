@@ -23,7 +23,7 @@ public class MusicTool extends javax.swing.JFrame{
     
        getContentPane().setBackground(java.awt.Color.WHITE);
        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-       javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
+       PanelLayout = new javax.swing.GroupLayout(getContentPane());
        getContentPane().setLayout(PanelLayout);
 
        PanelLayout
@@ -79,7 +79,7 @@ public class MusicTool extends javax.swing.JFrame{
             }
         });
        remove(searchPanel);
-       javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
+      // javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
        getContentPane().setLayout(PanelLayout);
        
        PanelLayout
@@ -114,6 +114,13 @@ public class MusicTool extends javax.swing.JFrame{
       pack(); 
        
    }
+   public void UnfoundSong(String songName, String artistName) {
+       javax.swing.JOptionPane.showMessageDialog(null,
+    songName + " by " + artistName + " was not found",
+    "Error",
+    javax.swing.JOptionPane.ERROR_MESSAGE);
+    searchPanel.clear();
+    }
    public static void main(String args[]) {
 
         try {
@@ -151,5 +158,6 @@ public class MusicTool extends javax.swing.JFrame{
    private GUIFromJava displayPanel;
    private javax.swing.JButton searchInterface;
    private javax.swing.JSeparator separator;
+   private javax.swing.GroupLayout PanelLayout;
    
 }

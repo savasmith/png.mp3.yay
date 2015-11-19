@@ -31,7 +31,7 @@ public class SongFinder {
             songMoodMatch(song);
         }
         else{
-            musicTool.initComponents();
+            musicTool.UnfoundSong(songName, artistName);
         }
    
         }
