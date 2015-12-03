@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.util.ArrayList\ getAllImages()
+comment0.text=\n\ This\ method\ returns\ a\ list\ of\ all\ questions\ in\ the\ database\ as\ basic\ \n\ Question\ types.\ \ The\ questions\ return\n\ @return\ an\ ArrayList\ of\ Questions\ containing\ all\ questions\ in\ the\ database\n\ \n\ pre\:\n\ \n\ post\:\n
+comment1.params=songId
+comment1.target=Image\ getImage(int)
+comment1.text=\n\ This\ method\ gets\ the\ question\ from\ the\ database\ that\ has\ the\ id\ specified\n\ in\ the\ parameter\ questionId.\n\ @param\ questionId\ The\ id\ of\ of\ the\ question\ to\ be\ retrieved\ from\n\ the\ database\n\ @return\ an\ ArrayList\ of\ Questions\ containing\ all\ questions\ in\ the\ database\n\ \n\ pre\:\n\ \n\ post\:\n
+comment2.params=s
+comment2.target=void\ addImage(Image)
+comment2.text=\n\ Adds\ a\ question\ to\ the\ database\n\ @param\ q\ the\ question\ to\ be\ added\ to\ the\ database.\ \ Id\ field\ will\ be\n\ ignored\ and\ a\ new\ unique\ id\ will\ be\ assigned.\n\ \n\ pre\:\n\ \n\ post\:\n
+numComments=3

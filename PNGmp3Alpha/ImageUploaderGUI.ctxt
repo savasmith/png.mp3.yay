@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ImageUploaderGUI()
+comment0.text=\n\ Creates\ new\ form\ ImageUploaderGUI\n
+comment1.params=
+comment1.target=void\ initComponents()
+comment1.text=\n\ This\ method\ is\ called\ from\ within\ the\ constructor\ to\ initialize\ the\ form.\n\ WARNING\:\ Do\ NOT\ modify\ this\ code.\ The\ content\ of\ this\ method\ is\ always\n\ regenerated\ by\ the\ Form\ Editor.\n
+comment2.params=evt
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=3

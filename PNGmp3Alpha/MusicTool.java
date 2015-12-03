@@ -13,9 +13,7 @@ public class MusicTool extends javax.swing.JFrame{
     
    /**initializes the start of the app with the search panel */
    public void initComponents() {
-       if(displayPanel != null) {
-           remove(displayPanel);
-        }
+       removeAllViews();
        searchPanel = new SearchTool(this);
        Bar = new SideBar(this);
        separator = new javax.swing.JSeparator();
@@ -60,6 +58,7 @@ public class MusicTool extends javax.swing.JFrame{
    
    /**Changes the GUI interface to show what image is connected to it */
    public void changeGUI(String mood) {
+       removeAllViews();
        displayPanel = new GUIFromJava(mood);
        searchInterface = new javax.swing.JButton();
        searchInterface.setText("Search Again");
@@ -69,8 +68,7 @@ public class MusicTool extends javax.swing.JFrame{
        searchInterface.addActionListener(new java.awt.event.ActionListener() {
            public void actionPerformed(java.awt.event.ActionEvent evt){
                try {
-                   remove(displayPanel);
-                   remove(searchInterface);
+                   removeAllViews();
                    initComponents();
             }catch(Exception e){
                 System.out.println(e);
@@ -78,7 +76,7 @@ public class MusicTool extends javax.swing.JFrame{
             
             }
         });
-       remove(searchPanel);
+
       // javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(getContentPane());
        getContentPane().setLayout(PanelLayout);
        
@@ -121,6 +119,70 @@ public class MusicTool extends javax.swing.JFrame{
     javax.swing.JOptionPane.ERROR_MESSAGE);
     searchPanel.clear();
     }
+    
+   public void addSong() {
+    removeAllViews();
+    
+    songAdder = new SongAdderGUI();
+    
+     getContentPane().setLayout(PanelLayout);
+       
+       PanelLayout
+        .setHorizontalGroup(PanelLayout
+            .createParallelGroup(
+                javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(
+                PanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(songAdder)
+                .addGap(21, 21, 21))
+             );
+               
+      
+       PanelLayout
+        .setVerticalGroup(PanelLayout
+            .createParallelGroup(
+                javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(
+                PanelLayout.createSequentialGroup()
+                    .addGap(21,21,21)
+                    .addComponent(songAdder)
+                    .addGap(21, 21, 21)
+                    ));
+                    
+      pack(); 
+    }
+    
+    public void uploadImage(){
+       removeAllViews();
+       imageUploadPanel = new ImageUploaderGUI();
+       getContentPane().setLayout(PanelLayout);
+       
+       PanelLayout
+        .setHorizontalGroup(PanelLayout
+            .createParallelGroup(
+                javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(
+                PanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(imageUploadPanel)
+                .addGap(21, 21, 21))
+             );
+               
+      
+       PanelLayout
+        .setVerticalGroup(PanelLayout
+            .createParallelGroup(
+                javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(
+                PanelLayout.createSequentialGroup()
+                    .addGap(21,21,21)
+                    .addComponent(imageUploadPanel)
+                    .addGap(21, 21, 21)
+                    ));
+                    
+      pack(); 
+    }
    public static void main(String args[]) {
 
         try {
@@ -152,12 +214,31 @@ public class MusicTool extends javax.swing.JFrame{
                 new MusicTool().setVisible(true);
             }
         });
+        
+        
    }
+   
+   public void removeAllViews() {
+       if (searchPanel != null) {
+        remove(searchPanel);
+        }
+        if (displayPanel != null) {
+        remove(displayPanel);
+        }
+        if (songAdder != null) {
+        remove(songAdder);
+        }
+        if (imageUploadPanel != null) {
+            remove(imageUploadPanel);
+        }
+    }
    private SideBar Bar;
    private SearchTool searchPanel;
    private GUIFromJava displayPanel;
+   private ImageUploaderGUI imageUploadPanel;
    private javax.swing.JButton searchInterface;
    private javax.swing.JSeparator separator;
    private javax.swing.GroupLayout PanelLayout;
+   private SongAdderGUI songAdder;
    
 }

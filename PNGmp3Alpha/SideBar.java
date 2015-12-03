@@ -31,6 +31,17 @@ public class SideBar extends javax.swing.JPanel {
             }
         });
         
+       addSongButton.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt) {
+               musicTool.addSong();
+            }
+        });
+        uploadImageButton.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt) {
+               musicTool.uploadImage();
+            }
+        });
+        
             try{
        javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
     }catch(Exception e) {
@@ -51,8 +62,8 @@ public class SideBar extends javax.swing.JPanel {
                         .addComponent(uploadImageButton)
                         .addGap(10,10,10)
                         .addComponent(addSongButton)
-                        .addGap(10,10,10)
-                        .addComponent(viewPastButton)
+                       // .addGap(10,10,10)
+                       // .addComponent(viewPastButton)
                         .addGap(10, 10, 10)));
                         
         PanelLayout
@@ -74,11 +85,11 @@ public class SideBar extends javax.swing.JPanel {
                         .addGap(10,10,10)
                         .addComponent(addSongButton)
                         .addGap(15, 15,15))
-                 .addGroup(
+                 /*.addGroup(
                     PanelLayout.createSequentialGroup()
                         .addGap(10,10,10)
                         .addComponent(viewPastButton)
-                        .addGap(15, 15,15)));
+                        .addGap(15, 15,15))*/);
                         
                     
         

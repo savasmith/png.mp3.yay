@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SongAdderGUI()
+comment0.text=\n\ Creates\ new\ form\ SongAdder\n
+comment1.params=
+comment1.target=void\ initComponents()
+comment2.params=evt
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=evt
+comment3.target=void\ jButton1ActionPerformed(java.awt.event.ActionEvent)
+numComments=4

@@ -1,10 +1,14 @@
 #BlueJ class context
-comment0.params=songName\ artistName\ musicTool
-comment0.target=void\ findSong(java.lang.String,\ java.lang.String,\ MusicTool)
-comment1.params=song
-comment1.target=void\ getSongInfo(com.echonest.api.v4.Song)
+comment0.params=songName\ artistName
+comment0.target=boolean\ findSong(java.lang.String,\ java.lang.String)
+comment1.params=songName\ artistName\ musicTool
+comment1.target=void\ findSong(java.lang.String,\ java.lang.String,\ MusicTool)
 comment2.params=song
-comment2.target=void\ songMoodMatch(com.echonest.api.v4.Song)
-comment3.params=artists\ songName
-comment3.target=com.echonest.api.v4.Song\ songMatch(java.util.List,\ java.lang.String)
-numComments=4
+comment2.target=void\ getSongInfo(com.echonest.api.v4.Song)
+comment3.params=song
+comment3.target=void\ songMoodMatch(com.echonest.api.v4.Song)
+comment4.params=artists\ songName
+comment4.target=com.echonest.api.v4.Song\ songMatch(java.util.List,\ java.lang.String)
+comment5.params=Artist\ Song
+comment5.target=NewSong\ searchDB(java.lang.String,\ java.lang.String)
+numComments=6

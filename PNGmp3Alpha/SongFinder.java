@@ -13,7 +13,9 @@ public class SongFinder {
    public static String[] moods = {"happy","sad", "intense", "upbeat", "mellow", "happy"}; 
 
    public static MusicTool musicTool;
-    public void findSong(String songName, String artistName, MusicTool musicTool) throws EchoNestException{
+   public DataAccess access;
+   
+    public boolean findSong(String songName, String artistName) throws EchoNestException{
         this.musicTool = musicTool;
         System.out.println(songName);
         System.out.println(artistName);
@@ -25,16 +27,46 @@ public class SongFinder {
 
         System.out.println(artists);
         Song song = songMatch(artists, songName);
+        
+        if(song != null) {
+            return true;
+        }
+    
+            return false;
+        
+   
+        }
+        
+      public void findSong(String songName, String artistName, MusicTool musicTool) throws EchoNestException{
+        this.musicTool = musicTool;
+        System.out.println(songName);
+        System.out.println(artistName);
        
+        
+        NewSong songDB = searchDB(artistName, songName);
+
+        if (songDB != null) {
+                    musicTool.changeGUI(songDB.getMood().toLowerCase());
+        }
+        else{
+           Params songParams = new Params();
+        songParams.add("title", songName);
+        echoNest = new EchoNestAPI("F9GHGBIFH4HPLQBWR");
+        List<Artist> artists = echoNest.searchArtists(artistName);
+
+
+        System.out.println(artists);
+        Song song = songMatch(artists, songName);  
+ 
         if (song != null) {
-            getSongInfo(song);
+            //getSongInfo(song);
             songMoodMatch(song);
         }
         else{
             musicTool.UnfoundSong(songName, artistName);
         }
-   
-        }
+    }
+        }   
     
     
     public void getSongInfo(Song song) throws EchoNestException{
@@ -90,6 +122,20 @@ public class SongFinder {
             }
         }
         return selected;
+    }
+    
+    public NewSong searchDB(String Artist, String Song) {
+          ArrayList<NewSong> songs = access.getAllSongs();
+          String artist = Artist.toLowerCase();
+          String songName = Song.toLowerCase();
+          for (NewSong song : songs) {
+              song.print();
+              System.out.println(song.getSong());
+              if ((song.getArtist().toLowerCase().equals(artist))){// && (song.getSong().toLowerCase().equals(song))) {
+                  return song;
+                }
+            }
+            return null;
     }
     
 }

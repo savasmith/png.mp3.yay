@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=song
+comment0.target=SongAdder(NewSong)
+comment1.params=tempSong
+comment1.target=boolean\ checkEchoSong(NewSong)
+comment2.params=tempSong
+comment2.target=boolean\ checkSongDatabase(NewSong)
+comment3.params=tempSong
+comment3.target=void\ addSong(NewSong)
+numComments=4

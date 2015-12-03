@@ -28,7 +28,7 @@ public class GUIFromJava extends javax.swing.JPanel{
         imageLabel = new JLabel(new ImageIcon("../images/error.png"));
         moodLabel.setFont(new java.awt.Font("Courier New", java.awt.Font.BOLD, 20));
         System.out.println(moodLabel.getText());
-        switch (mood){
+      /*  switch (mood){
             case "happy":
             imageLabel =  new JLabel(new ImageIcon("../images/happy_face.png"));
             break;
@@ -40,8 +40,9 @@ public class GUIFromJava extends javax.swing.JPanel{
             case "upbeat":
             imageLabel = new JLabel(new ImageIcon("../images/upbeat.jpg"));
             break;
-        }
-         
+        }*/
+        Image image = new ImageUpload().getImage(mood);
+        imageLabel = new JLabel(new ImageIcon("../images/" + image.getPath()));
         imageLabel.setSize(50,50);
         
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(this);
